@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Supabase Google Auth setup
+
+1. In Supabase, open `Authentication > Providers > Google` and enable Google login.
+2. Add the callback URL for local development:
+   - `http://localhost:3000/auth/callback`
+3. Add your production callback URL:
+   - `https://<your-domain>/auth/callback`
+4. In `Authentication > URL Configuration` configure:
+   - Site URL: `http://localhost:3000` (or your production domain in prod project)
+   - Additional Redirect URLs: include both local and production callback URLs
+5. Ensure `.env.local` includes:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
