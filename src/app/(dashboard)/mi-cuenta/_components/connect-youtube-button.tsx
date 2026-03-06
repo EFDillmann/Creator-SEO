@@ -24,7 +24,7 @@ export function ConnectYouTubeButton() {
     <button
       type="button"
       onClick={handleConnect}
-      className="flex items-center gap-2 rounded border border-gray-300 px-4 py-2 text-sm font-medium text-[#0f0f0f] transition-colors hover:bg-gray-50 hover:text-black"
+      className="flex items-center gap-2 rounded border border-gray-300 px-4 py-2 text-sm font-medium text-yt-text transition-colors hover:bg-gray-50 hover:text-black"
     >
       <svg
         className="h-5 w-5"

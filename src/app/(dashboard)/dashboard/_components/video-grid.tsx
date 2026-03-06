@@ -31,7 +31,7 @@ export function VideoGrid({ userId }: VideoGridProps) {
         <div className="flex flex-1 items-center justify-center p-8">
           <div className="flex flex-col items-center gap-4">
             <div className="h-8 w-8 animate-spin rounded-full border-2 border-gray-300 border-t-red-500" />
-            <p className="text-sm text-[#606060]">Cargando videos...</p>
+            <p className="text-sm text-yt-gray">Cargando videos...</p>
           </div>
         </div>
       </>
@@ -46,7 +46,7 @@ export function VideoGrid({ userId }: VideoGridProps) {
           <p className="text-center text-red-600">{error}</p>
           <button
             onClick={syncFromYouTube}
-            className="rounded bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-[#cc0000]"
+            className="rounded bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-primary-dark"
           >
             Reintentar
           </button>
@@ -63,13 +63,13 @@ export function VideoGrid({ userId }: VideoGridProps) {
           <div className="flex flex-col items-center gap-2 text-center">
             <Icon name="video_library" className="text-5xl text-gray-300" />
             <h3 className="text-lg font-bold text-black">No hay videos</h3>
-            <p className="max-w-md text-sm text-[#606060]">
+            <p className="max-w-md text-sm text-yt-gray">
               Sincroniza tu canal de YouTube para ver tus videos aquí.
             </p>
           </div>
           <button
             onClick={syncFromYouTube}
-            className="flex items-center gap-2 rounded bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#cc0000]"
+            className="flex items-center gap-2 rounded bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-dark"
           >
             <Icon name="sync" className="text-lg" />
             Sincronizar desde YouTube
@@ -86,7 +86,7 @@ export function VideoGrid({ userId }: VideoGridProps) {
         <div className="mb-6 flex items-end justify-between">
           <div>
             <h3 className="text-lg font-bold text-black">Videos Recientes</h3>
-            <p className="mt-1 text-sm text-[#606060]">
+            <p className="mt-1 text-sm text-yt-gray">
               Gestiona y optimiza el contenido de tu canal.
             </p>
           </div>

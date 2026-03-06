@@ -12,7 +12,7 @@ export default async function DashboardPage() {
   if (!user) return null;
 
   const channel = await getYouTubeChannel(
-    (await supabase.auth.getSession()).data.session?.provider_token ?? null
+    (await supabase.auth.getSession()).data.session?.provider_token ?? null,
   );
 
   if (!channel) {
@@ -26,7 +26,7 @@ export default async function DashboardPage() {
             <h1 className="mb-2 text-2xl font-bold text-black">
               Conecta tu canal de YouTube
             </h1>
-            <p className="mb-4 text-[#606060]">
+            <p className="mb-4 text-yt-gray">
               Para ver tus videos y optimizarlos, necesitas conectar tu canal de
               YouTube desde Mi Cuenta.
             </p>

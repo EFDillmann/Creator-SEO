@@ -35,7 +35,7 @@ export default async function MiCuentaPage() {
               <h1 className="mb-1 text-2xl font-bold text-black">
                 Configuración de la cuenta
               </h1>
-              <p className="font-medium text-[#606060]">{user.email}</p>
+              <p className="font-medium text-yt-gray">{user.email}</p>
               <div className="mt-2 inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
                 Plan Pro Activo
               </div>
@@ -43,7 +43,7 @@ export default async function MiCuentaPage() {
           </div>
           <Link
             href="#"
-            className="text-sm font-medium text-red-500 underline hover:text-[#cc0000]"
+            className="text-sm font-medium text-red-500 underline hover:text-primary-dark"
           >
             Editar perfil
           </Link>
@@ -59,12 +59,12 @@ export default async function MiCuentaPage() {
               <Icon name="favorite" className="text-red-500" />
               Referir a un amigo
             </h3>
-            <p className="text-sm leading-relaxed text-[#606060]">
+            <p className="text-sm leading-relaxed text-yt-gray">
               Invita a otros creadores y obtén 1 mes gratis de CreatorSEO Pro
               por cada amigo que se suscriba.
             </p>
           </div>
-          <div className="relative z-10 flex flex-shrink-0 flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="relative z-10 flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center">
             <div className="select-all rounded border border-red-100 bg-white px-3 py-2 font-mono text-sm text-gray-500">
               {referralLink}
             </div>
@@ -95,14 +95,14 @@ export default async function MiCuentaPage() {
                 )}
                 <div>
                   <p className="font-bold text-black">Canal de YouTube</p>
-                  <p className="text-sm text-[#606060]">
+                  <p className="text-sm text-yt-gray">
                     Conectado como &quot;{channel.title}&quot;
                   </p>
                 </div>
               </div>
               <a
                 href="/api/auth/logout"
-                className="flex items-center gap-2 rounded border border-gray-300 px-4 py-2 text-sm font-medium text-[#0f0f0f] transition-colors hover:bg-gray-50 hover:text-black"
+                className="flex items-center gap-2 rounded border border-gray-300 px-4 py-2 text-sm font-medium text-yt-text transition-colors hover:bg-gray-50 hover:text-black"
               >
                 <Icon name="link_off" className="text-lg" />
                 Desvincular cuenta
@@ -116,7 +116,7 @@ export default async function MiCuentaPage() {
                 </div>
                 <div>
                   <p className="font-bold text-black">Canal de YouTube</p>
-                  <p className="text-sm text-[#606060]">
+                  <p className="text-sm text-yt-gray">
                     Conecta tu canal para acceder a tus videos y analíticas.
                   </p>
                 </div>
@@ -137,20 +137,20 @@ export default async function MiCuentaPage() {
                 <p className="text-sm font-bold text-black">
                   Cerrar sesión en todos los dispositivos
                 </p>
-                <p className="mt-1 text-xs text-[#606060]">
+                <p className="mt-1 text-xs text-yt-gray">
                   Se te pedirá que inicies sesión nuevamente.
                 </p>
               </div>
               <a
                 href="/api/auth/logout"
-                className="rounded border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-[#0f0f0f] transition-colors hover:bg-gray-50 hover:text-black"
+                className="rounded border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-yt-text transition-colors hover:bg-gray-50 hover:text-black"
               >
                 Cerrar sesión
               </a>
             </div>
             <div className="flex items-center justify-between rounded-lg border border-red-100/50 bg-red-50/30 p-4">
               <div>
-                <p className="text-sm font-bold text-[#cc0000]">
+                <p className="text-sm font-bold text-primary-dark">
                   Borrar cuenta de CreatorSEO
                 </p>
                 <p className="mt-1 text-xs text-red-800/70">

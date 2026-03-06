@@ -54,7 +54,9 @@ export function VideoCard({ video }: { video: Video }) {
         <div className="mb-2 flex items-start justify-between">
           <span
             className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
-              isOptimized ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"
+              isOptimized
+                ? "bg-green-100 text-green-800"
+                : "bg-amber-100 text-amber-800"
             }`}
           >
             {isOptimized ? "Optimizado" : "Pendiente"}
@@ -66,7 +68,7 @@ export function VideoCard({ video }: { video: Video }) {
         <h4 className="mb-2 line-clamp-2 text-base font-bold leading-tight text-black">
           {video.title}
         </h4>
-        <p className="mb-4 line-clamp-2 text-sm text-[#606060]">
+        <p className="mb-4 line-clamp-2 text-sm text-yt-gray">
           {video.description ?? "Sin descripción"}
         </p>
         <div className="mt-auto border-t border-gray-100 pt-4">
@@ -83,7 +85,7 @@ export function VideoCard({ video }: { video: Video }) {
           {isOptimized ? (
             <Link
               href={`/dashboard/videos/${video.youtube_video_id}`}
-              className="flex items-center gap-1 text-sm font-medium text-red-500 transition-colors hover:text-[#cc0000]"
+              className="flex items-center gap-1 text-sm font-medium text-red-500 transition-colors hover:text-primary-dark"
             >
               Ver detalles
               <Icon name="arrow_forward" className="text-lg" />
@@ -91,7 +93,7 @@ export function VideoCard({ video }: { video: Video }) {
           ) : (
             <Link
               href={`/dashboard/videos/${video.youtube_video_id}/optimize`}
-              className="inline-flex items-center bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-red-200 transition-colors hover:bg-[#cc0000]"
+              className="inline-flex items-center bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-red-200 transition-colors hover:bg-primary-dark"
             >
               Optimizar
             </Link>

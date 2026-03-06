@@ -32,21 +32,21 @@ export default async function LoginPage() {
           <h2 className="mb-3 text-3xl font-bold text-black">
             Bienvenido de nuevo
           </h2>
-          <p className="mb-8 leading-relaxed text-[#606060]">
+          <p className="mb-8 leading-relaxed text-yt-gray">
             Accede a tu cuenta para empezar a optimizar tus videos.
           </p>
 
           <GoogleSignInButton />
 
           <div className="mb-2 rounded-lg border border-gray-100 bg-gray-50 p-3">
-            <p className="text-xs leading-tight text-[#606060]">
+            <p className="text-xs leading-tight text-yt-gray">
               Solo permitimos el acceso a través de Google para garantizar la
               integración con tus canales de YouTube.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 flex justify-center gap-6 text-xs text-[#606060]">
+        <div className="mt-8 flex justify-center gap-6 text-xs text-yt-gray">
           <a
             className="transition-colors hover:text-red-500 hover:underline"
             href="#"
