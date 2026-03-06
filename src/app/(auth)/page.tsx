@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
-import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 import { createClient } from "@/lib/supabase/server";
+import { Icon } from "@/shared/components/ui/icon";
+import { GoogleSignInButton } from "./_components/google-sign-in-button";
 
-export default async function Home() {
+export default async function LoginPage() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -19,18 +20,18 @@ export default async function Home() {
 
       <main className="w-full max-w-md">
         <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-xl shadow-gray-200/50 sm:p-10">
-          <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50" />
+          <div className="absolute top-0 left-0 h-1 w-full bg-linear-to-r from-transparent via-red-500 to-transparent opacity-50" />
 
           <div className="mb-8 flex items-center justify-center gap-2 text-red-500">
-            <span className="text-4xl" aria-hidden="true">
-              🤖
-            </span>
+            <Icon name="smart_toy" className="text-4xl" />
             <h1 className="text-2xl font-bold tracking-tight text-black">
               CreatorSEO.ai
             </h1>
           </div>
 
-          <h2 className="mb-3 text-3xl font-bold text-black">Bienvenido de nuevo</h2>
+          <h2 className="mb-3 text-3xl font-bold text-black">
+            Bienvenido de nuevo
+          </h2>
           <p className="mb-8 leading-relaxed text-[#606060]">
             Accede a tu cuenta para empezar a optimizar tus videos.
           </p>
@@ -39,19 +40,25 @@ export default async function Home() {
 
           <div className="mb-2 rounded-lg border border-gray-100 bg-gray-50 p-3">
             <p className="text-xs leading-tight text-[#606060]">
-              Solo permitimos el acceso a traves de Google para garantizar la
-              integracion con tus canales de YouTube.
+              Solo permitimos el acceso a través de Google para garantizar la
+              integración con tus canales de YouTube.
             </p>
           </div>
         </div>
 
         <div className="mt-8 flex justify-center gap-6 text-xs text-[#606060]">
-          <a className="transition-colors hover:text-red-500 hover:underline" href="#">
-            Terminos de Servicio
+          <a
+            className="transition-colors hover:text-red-500 hover:underline"
+            href="#"
+          >
+            Términos de Servicio
           </a>
           <span className="text-gray-300">•</span>
-          <a className="transition-colors hover:text-red-500 hover:underline" href="#">
-            Politica de Privacidad
+          <a
+            className="transition-colors hover:text-red-500 hover:underline"
+            href="#"
+          >
+            Política de Privacidad
           </a>
         </div>
       </main>

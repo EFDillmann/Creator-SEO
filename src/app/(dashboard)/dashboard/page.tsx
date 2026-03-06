@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function DashboardPage() {
@@ -7,9 +6,7 @@ export default async function DashboardPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    redirect("/");
-  }
+  if (!user) return null;
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-6 px-6 py-10">
@@ -19,7 +16,7 @@ export default async function DashboardPage() {
           <p className="font-semibold text-gray-900">{user.email}</p>
         </div>
         <a
-          href="/auth/logout"
+          href="/api/auth/logout"
           className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
         >
           Cerrar sesion

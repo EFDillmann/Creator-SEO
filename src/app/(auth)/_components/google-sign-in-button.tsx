@@ -9,7 +9,7 @@ export function GoogleSignInButton() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        redirectTo: `${window.location.origin}/api/auth/callback?next=/dashboard`,
       },
     });
   };
@@ -43,7 +43,7 @@ export function GoogleSignInButton() {
           fill="#EA4335"
         />
       </svg>
-      <span>Iniciar sesion con Google</span>
+      <span>Iniciar sesión con Google</span>
     </button>
   );
 }

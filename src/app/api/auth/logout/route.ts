@@ -1,9 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { signOutCurrentUser } from "@/app/(auth)/_actions/auth-actions";
 
 export async function GET(request: NextRequest) {
-  const supabase = await createClient();
-  await supabase.auth.signOut();
-
+  await signOutCurrentUser();
   return NextResponse.redirect(new URL("/", request.url));
 }
