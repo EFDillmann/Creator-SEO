@@ -8,6 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: #ff0000;
+  --color-primary-dark: #cc0000;
+  --color-yt-text: #0f0f0f;
+  --color-yt-gray: #606060;
   --font-sans: var(--font-space-grotesk);
 }
 

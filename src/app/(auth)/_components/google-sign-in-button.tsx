@@ -1,6 +1,10 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import {
+  GOOGLE_OAUTH_QUERY_PARAMS,
+  GOOGLE_OAUTH_SCOPES,
+} from "../_utils/auth-scopes";
 
 export function GoogleSignInButton() {
   const handleGoogleSignIn = async () => {
@@ -9,6 +13,8 @@ export function GoogleSignInButton() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
+        scopes: GOOGLE_OAUTH_SCOPES,
+        queryParams: GOOGLE_OAUTH_QUERY_PARAMS,
         redirectTo: `${window.location.origin}/api/auth/callback?next=/dashboard`,
       },
     });

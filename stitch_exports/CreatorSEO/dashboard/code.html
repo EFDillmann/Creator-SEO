@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Creator SEO AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF0000",
+                        "primary-dark": "#cc0000",
+                        "background-light": "#ffffff",
+                        "surface-light": "#f8f8f8",
+                        "surface-highlight": "#e5e5e5",
+                        "yt-text": "#000000",
+                        "yt-gray": "#606060",
+                        "status-green": "#065fd4","status-amber": "#F9AB00"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light text-yt-text font-display antialiased min-h-screen flex overflow-hidden">
+<aside class="w-64 border-r border-gray-200 bg-white flex flex-col h-screen fixed left-0 top-0 z-20">
+<div class="p-6 flex items-center gap-2 text-primary border-b border-gray-100">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+<h1 class="text-black text-xl font-bold tracking-tight">CreatorSEO.ai</h1>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg bg-red-50 text-primary font-bold border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined fill-1">video_library</span>
+<span>Mis publicaciones</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-yt-text hover:bg-gray-50 hover:text-black font-medium transition-colors border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Mi cuenta</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100">
+<button class="flex items-center gap-3 w-full px-3 py-2 text-yt-gray hover:text-primary transition-colors text-sm font-medium group">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">logout</span>
+<span>Cerrar sesión</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 ml-64 bg-white h-screen overflow-y-auto">
+<header class="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-100 px-8 py-4 flex items-center justify-between">
+<h2 class="text-2xl font-bold text-black">Dashboard</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400 focus:ring-0 text-black placeholder-gray-400 transition-all" placeholder="Buscar videos por título..." type="text"/>
+</div>
+</header>
+<div class="p-8">
+<div class="mb-6 flex justify-between items-end">
+<div>
+<h3 class="text-lg font-bold text-black">Videos Recientes</h3>
+<p class="text-sm text-yt-gray mt-1">Gestiona y optimiza el contenido de tu canal.</p>
+</div>
+<button class="text-sm text-primary font-medium hover:underline">Ver todos</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1s7ZM_tY6fMzJiinZFJDXlU9tePj1D9302MexMbYzBKcMGtH5RP_HVtQIR_WAAPLMUyveZpkMpZ1-b4E4TR2b9N9d_kwTyaSop0sSHsLqutKI6FkhrGh44APW58XkWyZYn7EpmljZiWVaBQb1OTtv7b9vsnbxPOU3w_WA6mlq30Oc-hFzBoO0dA1pRAt9JqZKN0NKD6SaZhbPe5TkAQTwFtCabo9pW9BL_6YtB64J0QInp73SWCJPsEch44TZKbUkwwH3l4kFegGh"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">12:45</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Optimizado
+                            </span>
+<span class="text-xs text-gray-400">Hace 2 días</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Cómo Crear una Estrategia de Contenidos para 2024 - Guía Completa</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Aprende paso a paso cómo planificar tu año con las mejores prácticas de SEO para YouTube.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 85</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium text-sm flex items-center gap-1 transition-colors">
+                                Ver detalles
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_uZtZebH3Z9MD3BAq76noWp5pJ3McxJvDLjvhVbxZMyH6sWv6V2_jsccTB7JOfQXkUni57f8DQNiFh7v4tKjwSSJoqB7m60VxGo2o68wZghN2NTXGYukcH3Kps_f5HwoJMT3Wcm6ByiMvith9gkv3Ne5hZChgmZl_3CdoP0UALMnHMCeI7ArFzxMJIgm1XNI40u4uEcLhFhLvk0KKOp_bW-xROrxYRE4entETcH1vrBpJYyNhmiKxRf-Z94d1FvW5bcEWa9gav1Em"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">08:20</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                Pendiente
+                            </span>
+<span class="text-xs text-gray-400">Hace 5 horas</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Tutorial de Iluminación para Estudio en Casa con Bajo Presupuesto</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Consigue un look profesional sin gastar una fortuna. Te muestro mi setup actual.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 450</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 32</span>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-white font-medium text-sm px-4 py-2 rounded transition-colors shadow-sm shadow-red-200">
+                                Optimizar
+                            </button>
+</div>
+</div>
+</div>
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFRWWLAb3h8aaI4K7bSFxmBgXCb5eop4fn8i2ofHv2tzSaNbV-v56Jj2s7L584U6wYxPhmy2Ml61thEMRuvuQnG9Sob-P4iJ_6pU0ZLvNnMBGys2cppoaTBMrbD-tRiwkLm-JZc17I_Xmr0St4OErnwtH4Ks38M0K5C9EFOlbODw_AlQYCOgPBlPn8z-9jreXEy60g0L-H5FyksFUjQ9AwjUMfMsOClGixlpzl_-bXlwDeTwgClpAdeisMHHYfjVAxrbQjU3U2JLwE"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">15:10</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Optimizado
+                            </span>
+<span class="text-xs text-gray-400">Hace 1 semana</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Análisis de Estadísticas: Entendiendo el Algoritmo</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Desglosamos las métricas más importantes que debes seguir en YouTube Studio.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 3.5k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 210</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium text-sm flex items-center gap-1 transition-colors">
+                                Ver detalles
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASb39jafrksKYzV4IrLIQkR2l0kxLxv3Fh3icnWXqTAh0UuXdvIdM6sUapHv2w4Fs-6CwsvNSGhNGhgdkOkuqZhJwchVm3Jvs4nzsn8opI5EiEKSEFuv1zXs8JdCRDhB8mgiP-ZiY16FbG_AY8FTkuhGRmpKg8x4T0X9em2RP1n5AndhJizytBpcYpnym-MdY9huQY7vfAA658UaR5_-opl1kfWAtj-rlg9NZ9LeZEsJ9XNxCeYv6OELHYDD4U3GXFdVg370KePkIb"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">05:45</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                Pendiente
+                            </span>
+<span class="text-xs text-gray-400">Hace 3 horas</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Unboxing Micrófono Shure SM7B - ¿Vale la pena?</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Review honesta después de una semana de uso intensivo para podcasting.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 120</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 15</span>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-white font-medium text-sm px-4 py-2 rounded transition-colors shadow-sm shadow-red-200">
+                                Optimizar
+                            </button>
+</div>
+</div>
+</div>
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6k5BbEl-Gf6UYkZ6OdRJl1ZOCuRAZwepE74zS5MoqUeF3fHp4N_D9R71rAdMJaBu5JGDzbqec6PeiovE0XRY_AAq4rb-I1r0b6jAQr7FfvHErEsoTxpio0eBn8Hklp18pmUnxU3ij-n_Do4-AGoMps5DO2CFZwVwmE6r7zJKbt5FmgbTY0AoEJts6zNmI7veeNU3dcquhM6NKc0YmYXYexkjh8uMHUrYleWa6G4jfzIGGFvyuhoG3PZHea11U2v3Wll2rcCGQULyB"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">22:15</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                Optimizado
+                            </span>
+<span class="text-xs text-gray-400">Hace 3 semanas</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Masterclass de Edición en Premiere Pro - Trucos de Flujo de Trabajo</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Ahorra horas en tu proceso de edición con estos atajos y técnicas avanzadas.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 8.9k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 540</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium text-sm flex items-center gap-1 transition-colors">
+                                Ver detalles
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex flex-col h-full overflow-hidden">
+<div class="relative aspect-video bg-gray-100 overflow-hidden">
+<img alt="Thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtln9N0vhbKezJ-SOss-QjDdDuh4PXWGFdQhCH_Lqm4V32pZouSf83D_3v213uulTvLcF8NsBA_dQdoDmwXSJE4tgmRTk5X6dp2XP1GcPMXSjiZ69bgtFDn1ng_1kZIyb58dLjTVOytkscW7uJigC31eMnkTrKoR74plHRQV5j30SasrFJJLmby7aFKyDauEkdM56YI9rA8Md3BkTg60raBNa3OiVFtqB_YSzYPUEFzJ4bWZKmLINAsN0Cii4082s23p2kLfriEAt5"/>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-medium">10:05</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                                Pendiente
+                            </span>
+<span class="text-xs text-gray-400">Hace 1 día</span>
+</div>
+<h4 class="text-base font-bold text-black leading-tight mb-2 line-clamp-2">Colaboración con Expertos: El Futuro de la IA</h4>
+<p class="text-sm text-yt-gray mb-4 line-clamp-2">Entrevista exclusiva sobre cómo la inteligencia artificial cambiará la creación de contenido.</p>
+<div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+<div class="flex items-center text-xs text-gray-500 gap-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 230</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 45</span>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-white font-medium text-sm px-4 py-2 rounded transition-colors shadow-sm shadow-red-200">
+                                Optimizar
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>
