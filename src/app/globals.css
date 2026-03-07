@@ -12,6 +12,9 @@
   --color-primary-dark: #cc0000;
   --color-yt-text: #0f0f0f;
   --color-yt-gray: #606060;
+  --color-background-light: #ffffff;
+  --color-surface-light: #f8f8f8;
+  --color-surface-highlight: #e5e5e5;
   --font-sans: var(--font-space-grotesk);
 }
 
@@ -20,6 +23,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
