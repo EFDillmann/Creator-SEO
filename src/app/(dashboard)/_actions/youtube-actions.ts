@@ -151,6 +151,136 @@ export async function fetchPlaylistVideos(
   };
 }
 
+export interface YouTubeVideoDetail {
+  youtube_video_id: string;
+  title: string;
+  description: string | null;
+  tags: string[];
+  category_id: string;
+  default_language: string | null;
+  recording_location: string | null;
+  privacy_status: string;
+  thumbnail_url: string;
+  duration_seconds: number | null;
+  view_count: number;
+  like_count: number;
+  published_at: string;
+}
+
+export async function getVideoDetail(
+  providerToken: string,
+  videoId: string
+): Promise<YouTubeVideoDetail | null> {
+  const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+  url.searchParams.set("part", "snippet,contentDetails,statistics,status,recordingDetails");
+  url.searchParams.set("id", videoId);
+
+  const res = await fetch(url.toString(), {
+    headers: { Authorization: `Bearer ${providerToken}` },
+  });
+
+  if (!res.ok) return null;
+
+  const data = (await res.json()) as {
+    items?: Array<{
+      id: string;
+      snippet?: {
+        title: string;
+        description: string;
+        tags?: string[];
+        categoryId?: string;
+        defaultLanguage?: string;
+        defaultAudioLanguage?: string;
+        publishedAt?: string;
+        thumbnails?: { default?: { url: string }; medium?: { url: string }; high?: { url: string } };
+      };
+      contentDetails?: { duration?: string };
+      statistics?: { viewCount?: string; likeCount?: string };
+      status?: { privacyStatus?: string };
+      recordingDetails?: { location?: { description?: string } };
+    }>;
+  };
+
+  const item = data.items?.[0];
+  if (!item?.snippet) return null;
+
+  const snippet = item.snippet;
+  const thumbnails = snippet.thumbnails;
+  const thumbnailUrl =
+    thumbnails?.high?.url ?? thumbnails?.medium?.url ?? thumbnails?.default?.url ?? "";
+
+  const recordingLocation =
+    (item as { recordingDetails?: { location?: { description?: string } } }).recordingDetails
+      ?.location?.description ?? null;
+
+  return {
+    youtube_video_id: item.id,
+    title: snippet.title ?? "",
+    description: snippet.description ?? null,
+    tags: snippet.tags ?? [],
+    category_id: snippet.categoryId ?? "22",
+    default_language: snippet.defaultLanguage ?? snippet.defaultAudioLanguage ?? null,
+    recording_location: recordingLocation,
+    privacy_status: item.status?.privacyStatus ?? "public",
+    thumbnail_url: thumbnailUrl,
+    duration_seconds: item.contentDetails?.duration
+      ? parseIso8601Duration(item.contentDetails.duration)
+      : null,
+    view_count: parseInt(item.statistics?.viewCount ?? "0", 10),
+    like_count: parseInt(item.statistics?.likeCount ?? "0", 10),
+    published_at: snippet.publishedAt ?? new Date().toISOString(),
+  };
+}
+
+export interface YouTubeVideoUpdatePayload {
+  title: string;
+  description: string;
+  tags: string[];
+  categoryId: string;
+  defaultLanguage?: string;
+  privacyStatus: string;
+}
+
+export async function updateVideoOnYouTube(
+  providerToken: string,
+  videoId: string,
+  payload: YouTubeVideoUpdatePayload
+): Promise<{ success: true } | { success: false; error: string }> {
+  const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+  url.searchParams.set("part", "snippet,status");
+
+  const body = {
+    id: videoId,
+    snippet: {
+      title: payload.title,
+      description: payload.description,
+      tags: payload.tags,
+      categoryId: payload.categoryId,
+      defaultLanguage: payload.defaultLanguage ?? undefined,
+    },
+    status: {
+      privacyStatus: payload.privacyStatus,
+    },
+  };
+
+  const res = await fetch(url.toString(), {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${providerToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    const message = (err as { error?: { message?: string } }).error?.message ?? res.statusText;
+    return { success: false, error: message };
+  }
+
+  return { success: true };
+}
+
 export async function getYouTubeChannel(
   providerToken: string | null
 ): Promise<YouTubeChannel | null> {
