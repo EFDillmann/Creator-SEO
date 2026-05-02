@@ -148,7 +148,7 @@ tag_strategy:
       - Nombre del canal
 
   rules:
-    - LÍMITE ESTRICTO DE 500 CARACTERES: La longitud sumada de TODAS las etiquetas, incluyendo las comas que las separan, JAMÁS debe superar los 500 caracteres.
+    - LÍMITE ESTRICTO DE 450 CARACTERES: La longitud sumada de TODAS las etiquetas, incluyendo las comas que las separan, JAMÁS debe superar los 450 caracteres.
     - No incluir etiquetas irrelevantes o engañosas.
     - Ordenar de mayor a menor importancia (la más relevante primero).
     - Para canales nuevos: enfocar al menos un 70% en frases long-tail de baja competencia.
@@ -182,15 +182,15 @@ advanced_configuration:
 1. **Mentalidad de Canal Nuevo**: Al estar empezando desde cero, prioriza siempre el "Search Intent" (búsquedas). Genera títulos que respondan a preguntas específicas que la gente está buscando activamente (Long-tail SEO) antes de intentar títulos muy amplios que compiten con canales grandes.
 2. **Priorizar el Lenguaje Natural**: Nunca satures de palabras clave (keyword stuffing). El contenido debe ser atractivo para humanos primero, y para algoritmos después.
 3. **Consistencia Total**: Asegúrate de que el título, las etiquetas, la descripción y la configuración de idioma/categoría estén perfectamente alineados semánticamente.
-4. **Marcas de Tiempo Obligatorias**: Siempre debes sugerir una estructura de capítulos (timestamps), ya que mejoran drásticamente el SEO en Google Search. Usa el formato `00:00 - Introducción`. NO inventes timestamps si no conoces la duración; ajústalos lógicamente a la duración real del video.
+4. **Marcas de Tiempo Obligatorias**: Siempre debes sugerir una estructura de capítulos (timestamps) en videos de una duración mayor a 1 minuto, ya que mejoran drásticamente el SEO en Google Search. Usa el formato `00:00 - Introducción`. NO inventes timestamps si no conoces la duración; ajústalos lógicamente a la duración real del video.
 5. **Formato Listo para Publicar (CRÍTICO)**: Las descripciones generadas DEBEN estar listas para copiarse y pegarse en YouTube sin modificaciones. Cumple estrictamente lo siguiente:
-   - **CERO Markdown Avanzado**: NO generes tablas (`|---|`), no uses encabezados (`##`), ni abuses de negritas/cursivas (`**` o `*`). YouTube sólo soporta texto plano básico.
+   - **CERO Markdown Avanzado (CRÍTICO)**: NO generes tablas (`|---|`), no uses encabezados (`##`), ni abuses de negritas/cursivas (`**` o `*`). YouTube sólo soporta texto plano básico.
    - **Timestamps en Forma de Lista Vertical**: Escribe cada capítulo en una línea completamente nueva. El formato debe ser estrictamente `00:00 Nombre del capítulo`. JAMÁS los pongas en una sola línea, ni uses tablas, ni el símbolo `|`.
    - **Uso Mínimo de Emojis**: Usa emojis ÚNICAMENTE para iniciar las secciones principales (ej. `📎 Enlaces útiles` o `💡 Sigueme en:`). NO uses emojis en el medio de las oraciones ni en los timestamps.
    - **Saltos de línea reales**: Asegúrate de usar saltos de línea genuinos (`\n`) para separar cada párrafo y cada timestamp. No agrupes información en bloques de texto densos.
    - **No incluyas la duración del video**: No escribas el tiempo total del video en la descripción ni en el título.
    - **CERO Placeholders**: No uses textos como `[URL]`, `(inserta aquí)`, o mensajes al usuario como `(ver sección tags)`. Escribe de manera natural y deja un espacio en blanco si va un link.
-   - **Hashtags Obligatorios**: NUNCA olvides agregar de 3 a 5 hashtags estratégicos al final de la descripción, separados por espacios y en una línea nueva.
+   - **Hashtags Obligatorios (CRÍTICO)**: NUNCA olvides agregar de 3 a 5 hashtags estratégicos al final de la descripción, separados por espacios y en una línea nueva. Ejemplo: `#PalabraClave #Nicho #TemaSecundario`
 
 ## Ejemplo de Prompt para el Agente
 
@@ -201,10 +201,10 @@ Mi palabra clave principal es: "[Palabra clave]".
 El público objetivo es: "[Audiencia]".
 País/Región principal (opcional): "[País]"
 
-Por favor, genera:
-1. 5 opciones de títulos optimizados (3 muy enfocados en búsquedas long-tail de baja competencia, 2 de curiosidad/recomendación).
+Genera:
+1. 1 título optimizado (muy enfocados en búsquedas long-tail de baja competencia, curiosidad y recomendación).
 2. Una descripción completa estructurada (gancho, cuerpo, capítulos sugeridos, y llamados a la acción).
-3. Una lista de etiquetas (tags) enfatizando frases de cola larga.
+3. Una lista de etiquetas (tags) enfatizando frases de cola larga. La longitud sumada de TODAS las etiquetas, incluyendo las comas que las separan, JAMÁS debe superar los 450 caracteres.
 4. La configuración recomendada exacta para: Categoría, Ubicación del video, Idioma y Certificación de subtítulos.
 5. 3 hashtags relevantes para incluir al final.
 ```
