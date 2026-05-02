@@ -3,24 +3,53 @@
 import { useState } from "react";
 import { Icon } from "@/shared/components/ui/icon";
 
+import {
+  generateDescriptionOptimization,
+  type AIVideoContext,
+} from "@/app/(dashboard)/_actions/ai-actions";
+
 interface VideoDescriptionFieldProps {
   value: string;
   onChange: (value: string) => void;
+  videoContext: AIVideoContext;
 }
 
 const MAX_DESCRIPTION_LENGTH = 5000;
 
-export function VideoDescriptionField({ value, onChange }: VideoDescriptionFieldProps) {
-  const [showToast, setShowToast] = useState(false);
+export function VideoDescriptionField({
+  value,
+  onChange,
+  videoContext,
+}: VideoDescriptionFieldProps) {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [errorToast, setErrorToast] = useState<string | null>(null);
 
-  const handleAIClick = () => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+  const handleAIClick = async () => {
+    setIsGenerating(true);
+    setErrorToast(null);
+    try {
+      const res = await generateDescriptionOptimization(videoContext);
+      if (res.success && res.data) {
+        onChange(res.data.description.slice(0, MAX_DESCRIPTION_LENGTH));
+      } else {
+        setErrorToast(res.error ?? "Error al optimizar descripción.");
+        setTimeout(() => setErrorToast(null), 3000);
+      }
+    } catch (e) {
+      console.error("Error al optimizar descripción:", e);
+      setErrorToast("Error de conexión.");
+      setTimeout(() => setErrorToast(null), 3000);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
     <div className="space-y-3">
-      <label htmlFor="video-desc" className="block text-sm font-bold text-yt-text">
+      <label
+        htmlFor="video-desc"
+        className="block text-sm font-bold text-yt-text"
+      >
         Descripción
       </label>
       <div className="relative">
@@ -36,10 +65,15 @@ export function VideoDescriptionField({ value, onChange }: VideoDescriptionField
           <button
             type="button"
             onClick={handleAIClick}
-            className="flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-primary shadow-sm transition-colors hover:bg-gray-50"
+            disabled={isGenerating}
+            className="flex items-center gap-1.5 rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-bold text-primary shadow-sm transition-colors hover:bg-gray-50 disabled:opacity-70"
           >
-            <Icon name="auto_awesome" className="text-sm" />
-            Mejorar con IA
+            {isGenerating ? (
+              <Icon name="progress_activity" className="animate-spin text-sm" />
+            ) : (
+              <Icon name="auto_awesome" className="text-sm" />
+            )}
+            {isGenerating ? "Mejorando..." : "Mejorar con IA"}
           </button>
         </div>
       </div>
@@ -47,9 +81,9 @@ export function VideoDescriptionField({ value, onChange }: VideoDescriptionField
         Escribe palabras clave al principio de la descripción para mejorar el
         SEO.
       </p>
-      {showToast && (
-        <div className="fixed bottom-4 right-4 z-50 rounded-lg bg-gray-900 px-4 py-2 text-sm text-white shadow-lg">
-          Próximamente
+      {errorToast && (
+        <div className="fixed bottom-4 right-4 z-50 rounded-lg bg-red-600 px-4 py-2 text-sm text-white shadow-lg">
+          {errorToast}
         </div>
       )}
     </div>

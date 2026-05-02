@@ -19,7 +19,12 @@ export function VideoDetailSidebar({ video }: VideoDetailSidebarProps) {
   return (
     <div className="lg:col-span-4 space-y-6">
       <div className="sticky top-24">
-        <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-black shadow-sm aspect-video">
+        <a
+          href={`https://youtube.com/watch?v=${video.youtube_video_id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block relative overflow-hidden rounded-xl border border-gray-200 bg-black shadow-sm aspect-video cursor-pointer"
+        >
           <Image
             src={video.thumbnail_url}
             alt={video.title}
@@ -28,11 +33,11 @@ export function VideoDetailSidebar({ video }: VideoDetailSidebarProps) {
             sizes="(max-width: 1024px) 100vw, 33vw"
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-6xl text-white opacity-80 drop-shadow-lg">
+            <span className="text-6xl text-white opacity-80 drop-shadow-lg transition-transform group-hover:scale-110">
               <Icon name="play_circle" />
             </span>
           </div>
-        </div>
+        </a>
         <div className="mt-6 space-y-4">
           <div>
             <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-gray-600">

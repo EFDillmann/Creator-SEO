@@ -3,17 +3,51 @@
 import { useState } from "react";
 import { Icon } from "@/shared/components/ui/icon";
 
+import type { GeneralOptimizationResult } from "@/app/(dashboard)/_types/ai-schemas";
+import {
+  generateGeneralOptimization,
+  type AIVideoContext,
+} from "@/app/(dashboard)/_actions/ai-actions";
+
 interface VideoDetailAIContextProps {
   value: string;
   onChange: (value: string) => void;
+  onAIComplete: (data: GeneralOptimizationResult) => void;
+  videoContext: AIVideoContext;
 }
 
-export function VideoDetailAIContext({ value, onChange }: VideoDetailAIContextProps) {
-  const [showToast, setShowToast] = useState(false);
+export function VideoDetailAIContext({
+  value,
+  onChange,
+  onAIComplete,
+  videoContext,
+}: VideoDetailAIContextProps) {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [errorToast, setErrorToast] = useState<string | null>(null);
 
-  const handleAIClick = () => {
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
+  const handleAIClick = async () => {
+    if (!value.trim()) {
+      setErrorToast("Por favor, ingresa algo de contexto primero.");
+      setTimeout(() => setErrorToast(null), 3000);
+      return;
+    }
+    setIsGenerating(true);
+    setErrorToast(null);
+    try {
+      const res = await generateGeneralOptimization(videoContext);
+      if (res.success && res.data) {
+        onAIComplete(res.data);
+      } else {
+        setErrorToast(res.error ?? "Error desconocido al optimizar.");
+        setTimeout(() => setErrorToast(null), 3000);
+      }
+    } catch (e) {
+      console.error("Error al generar optimización:", e);
+      setErrorToast("Ocurrió un error en la conexión.");
+      setTimeout(() => setErrorToast(null), 3000);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -48,15 +82,20 @@ export function VideoDetailAIContext({ value, onChange }: VideoDetailAIContextPr
         <button
           type="button"
           onClick={handleAIClick}
-          className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-sm shadow-red-200 transition-colors hover:bg-primary-dark"
+          disabled={isGenerating}
+          className="group flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-sm shadow-red-200 transition-colors hover:bg-primary-dark disabled:opacity-70"
         >
-          <Icon name="bolt" className="group-hover:animate-pulse" />
-          Generar todos los detalles con IA
+          {isGenerating ? (
+            <Icon name="progress_activity" className="animate-spin" />
+          ) : (
+            <Icon name="bolt" className="group-hover:animate-pulse" />
+          )}
+          {isGenerating ? "Generando..." : "Generar todos los detalles con IA"}
         </button>
       </div>
-      {showToast && (
-        <div className="fixed bottom-4 right-4 z-50 rounded-lg bg-gray-900 px-4 py-2 text-sm text-white shadow-lg">
-          Próximamente
+      {errorToast && (
+        <div className="fixed bottom-4 right-4 z-50 rounded-lg bg-red-600 px-4 py-2 text-sm text-white shadow-lg">
+          {errorToast}
         </div>
       )}
     </div>

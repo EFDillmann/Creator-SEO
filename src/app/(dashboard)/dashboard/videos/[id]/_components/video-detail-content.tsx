@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { VideoDetailHeader } from "./video-detail-header";
 import { VideoDetailSidebar } from "./video-detail-sidebar";
@@ -32,15 +32,15 @@ export function VideoDetailContent({ video, userId }: VideoDetailContentProps) {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formState, setFormState] = useState<VideoFormData>(toFormData(video));
-  const initialData = useRef(toFormData(video));
+  const [initialData, setInitialData] = useState<VideoFormData>(toFormData(video));
 
   const hasChanges =
-    JSON.stringify(formState) !== JSON.stringify(initialData.current);
+    JSON.stringify(formState) !== JSON.stringify(initialData);
 
   const handleDiscard = useCallback(() => {
     const initial = toFormData(video);
     setFormState(initial);
-    initialData.current = initial;
+    setInitialData(initial);
   }, [video]);
 
   const handleSaveToYouTube = useCallback(
@@ -54,7 +54,7 @@ export function VideoDetailContent({ video, userId }: VideoDetailContentProps) {
       );
       setIsSaving(false);
       if (result.success) {
-        initialData.current = formData;
+        setInitialData(formData);
         router.refresh();
       } else {
         setError(result.error);
@@ -90,6 +90,7 @@ export function VideoDetailContent({ video, userId }: VideoDetailContentProps) {
             </div>
             <VideoDetailForm
               formId="video-detail-form"
+              video={video}
               formState={formState}
               onFormStateChange={setFormState}
               onSaveToYouTube={handleSaveToYouTube}
