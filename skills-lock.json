@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "YouTube Automation": {
+      "source": "claude-office-skills/skills",
+      "sourceType": "github",
+      "skillPath": "youtube-automation/SKILL.md",
+      "computedHash": "56c9207546e26c117fc0093ae533ceaaf3ccf0a61070a38a75a1a6d5a00b0c4e"
+    }
+  }
+}
